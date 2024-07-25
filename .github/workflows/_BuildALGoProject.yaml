@@ -76,6 +76,7 @@ permissions:
   contents: read
   actions: read
   id-token: write
+  issues: read
 
 env:
   ALGoOrgSettings: ${{ vars.ALGoOrgSettings }}
@@ -102,6 +103,10 @@ jobs:
           shell: ${{ inputs.shell }}
           project: ${{ inputs.project }}
           get: useCompilerFolder,keyVaultCodesignCertificateName,doNotSignApps,doNotRunTests,artifact,generateDependencyArtifact
+
+      - name: CustomStep-InitAlpaca
+        run: |
+          Write-Host "Set artifact and download scripts to .AL-Go folder"
 
       - name: Read secrets
         id: ReadSecrets
