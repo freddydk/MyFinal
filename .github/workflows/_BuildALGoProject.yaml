@@ -103,6 +103,10 @@ jobs:
           project: ${{ inputs.project }}
           get: useCompilerFolder,keyVaultCodesignCertificateName,doNotSignApps,doNotRunTests,artifact,generateDependencyArtifact
 
+      - name: CustomStep-Alpaca
+        run: |
+          Write-Host "Set artifact and download scripts to .AL-Go folder"
+
       - name: Read secrets
         id: ReadSecrets
         if: github.event_name != 'pull_request'
